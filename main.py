@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import time
 import requests
 import smtplib
@@ -29,7 +30,7 @@ while 1:
 
     payload = {
         'email': 'ranxuebin@ranxb.cn',
-        'password': '*******',
+        'password': 'wsrxb123',
         'captcha': ''
     }
 
@@ -37,8 +38,8 @@ while 1:
     def send_mail(sub, text):
         # 第三方 SMTP 服务
         mail_host = "smtp.lzu.edu.cn"  # 设置服务器
-        mail_user = "****"  # 用户名
-        mail_pass = "*****"  # 口令
+        mail_user = "ranxb16"  # 用户名
+        mail_pass = "wsrxb123"  # 口令
 
         sender = 'ranxb16@lzu.cn'
         # receivers = ['ranxuebin@ranxb.cn']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
@@ -65,6 +66,7 @@ while 1:
 
     except:
         print("login error!")
+
     result = BeautifulSoup(response_home.text, "html.parser")
     result = result.find(class_="alert alert-info")
     print(time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "    " + result.span.string)
