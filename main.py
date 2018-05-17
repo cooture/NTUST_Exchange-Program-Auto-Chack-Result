@@ -7,6 +7,7 @@ from email.header import Header
 
 from bs4 import BeautifulSoup
 
+message = 'Pass the first stage'
 while 1:
     loginurl = 'http://stu88.ntust.edu.tw/inboundchina/stu/login.do'
     homeurl = "http://stu88.ntust.edu.tw/inboundchina/stu/review.result"
@@ -71,7 +72,8 @@ while 1:
     result = result.find(class_="alert alert-info")
     print(time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "    " + result.span.string)
 
-    if result.span.string != 'Pass the first stage':
+    if result.span.string != message:
         send_mail("台科大信息", result.span.string)
+        message = result.span.string
 
     time.sleep(600)
